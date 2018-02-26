@@ -9,7 +9,8 @@ import MyMusic from '@/components/MyMusic'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -26,17 +27,26 @@ export default new Router({
         {
           path: 'songs',
           name: 'songs',
-          component: IndexSongs
+          component: IndexSongs,
+          meta: {
+            keepAlive: true
+          }
         },
         {
           path: 'videos',
           name: 'videos',
-          component: IndexVideos
+          component: IndexVideos,
+          meta: {
+            keepAlive: true
+          }
         },
         {
           path: 'fm',
           name: 'fm',
-          component: IndexFM
+          component: IndexFM,
+          meta: {
+            keepAlive: true
+          }
         }
       ]
     },
@@ -52,3 +62,13 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // 全局导航守卫
+  // console.log('router guide')
+  // console.log('to', to)
+  // console.log('from', from)
+  next()
+})
+
+export default router

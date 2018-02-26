@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <SideBar></SideBar>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
     <div
       @click="$store.commit('maskShow')"
       :class="$store.state.mask_show ? 'show': ''"
@@ -13,6 +15,14 @@
   import SideBar from './components/common/SideBar.vue'
   export default {
     name: 'app',
+    watch: {
+      $route (to, from) {
+        console.log('to: ', to)
+        console.log('from: ', from)
+      }
+    },
+    created () {
+    },
     components: {
       SideBar
     }

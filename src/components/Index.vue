@@ -1,11 +1,11 @@
 <template>
-  <div class="index">
+  <div ref="index" class="index">
     <Heads></Heads>
     <div class="content" @scroll="scrolling">
       <ul class="tab">
-        <router-link :class="selected_tab === 'songs' ? 'active' : ''" @click.native="changeTab('songs')" to="/index/songs" tag="li">音乐</router-link>
-        <router-link :class="selected_tab === 'videos' ? 'active' : ''" @click.native="changeTab('videos')" to="/index/videos" tag="li">视频</router-link>
-        <router-link :class="selected_tab === 'fm' ? 'active' : ''" @click.native="changeTab('fm')" to="/index/fm" tag="li">电台</router-link>
+        <li :class="selected_tab === 'songs' ? 'active' : ''" @click="changeTab('songs')" href='javascript:;'>音乐</li>
+        <li :class="selected_tab === 'videos' ? 'active' : ''" @click="changeTab('videos')" href='javascript:;'>视频</li>
+        <li :class="selected_tab === 'fm' ? 'active' : ''" @click="changeTab('fm')" href='javascript:;'>电台</li>
       </ul>
 
       <keep-alive>
@@ -19,30 +19,57 @@
 <script>
   import Heads from './common/Heads.vue'
   import Foots from './common/Foots.vue'
+  // import BScroll from 'better-scroll'
   let time
 
   export default {
     data () {
       return {
-        selected_tab: 'songs',
-        keep_: 'songs'
+
       }
     },
     components: {
       Heads,
       Foots
     },
+    computed: {
+      selected_tab () {
+        return this.$store.state.index_active
+      },
+      keep_ () {
+        return this.$store.state.index_active
+      }
+    },
     methods: {
       changeTab (v) {
-        this.selected_tab = v
+        this.$router.push({
+          name: v,
+          params: {
+            type: v
+          }
+        })
+        this.$store.commit('index_tab_isActive', v)
+        // console.log('index_active: ', this.selected_tab)
       },
       scrolling (e) {
         let now = new Date().getTime()
         if (now - time <= 50) return
         time = new Date().getTime()
-        // location.href = location.pathname + '?st=' + e.target.scrollTop
-        console.log(location.pathname + '?st=' + e.target.scrollTop)
       }
+    },
+    created () {
+      const type = this.$route.path.split('/').slice(-1)[0] || 'songs'
+      this.$store.commit('index_tab_isActive', type)
+      // console.log(this.$route)
+      // console.log(type)
+      console.log('index created ')
+    },
+    mounted () {
+      // console.log(this.$refs.index)
+      // console.log(BScroll)
+      // this.$nextTick(() => {
+      //   this.scroll = new BScroll(this.$refs.index, {})
+      // })
     }
   }
 </script>

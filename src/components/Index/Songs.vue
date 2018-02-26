@@ -132,7 +132,7 @@
       }
     },
     created () {
-      console.log(this.$route)
+      console.log('/index/songs created ')
     }
   }
 </script>

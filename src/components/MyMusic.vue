@@ -15,6 +15,12 @@
         msg: 'MyMusic.vue msg'
       }
     },
+    created () {
+      console.log('MyMusic create')
+    },
+    activated: function () {
+      console.log('MyMusic has reused')
+    },
     components: {
       Heads,
       Foots

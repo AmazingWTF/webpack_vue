@@ -15,6 +15,9 @@
         msg: 'MyFriends.vue msg'
       }
     },
+    created () {
+      console.log('friends create')
+    },
     components: {
       Heads,
       Foots

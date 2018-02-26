@@ -16,7 +16,7 @@
         to="/index"
         tag="li"
         class="icon-logo"
-        @click.native="$store.commit('isActive', 'index')"
+        @click.native="test"
         :class="{'active' : active === 'index'}">
       </router-link>
       <router-link
@@ -50,6 +50,9 @@
         fetch(this, {url: '/search?q=周杰伦'}, (res) => {
           console.log(res)
         })
+      },
+      test () {
+        this.$store.commit('isActive', 'index')
       }
     }
   }
