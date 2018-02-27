@@ -12,7 +12,7 @@ const store = new Vuex.Store({
   state: {
     active: 'index',  // 头部导航高亮
     mask_show: false,
-    index_active: 'songs',  // index 页面tab高亮
+    index_active: 'IndexSongs',  // index 页面tab高亮
     index_status: '',
     index_route: ''
   },

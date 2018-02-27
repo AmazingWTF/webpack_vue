@@ -3,9 +3,9 @@
     <Heads></Heads>
     <div class="content" @scroll="scrolling">
       <ul class="tab">
-        <li :class="selected_tab === 'songs' ? 'active' : ''" @click="changeTab('IndexSongs')" href='javascript:;'>音乐</li>
-        <li :class="selected_tab === 'videos' ? 'active' : ''" @click="changeTab('IndexVideos')" href='javascript:;'>视频</li>
-        <li :class="selected_tab === 'fm' ? 'active' : ''" @click="changeTab('IndexFM')" href='javascript:;'>电台</li>
+        <li :class="selected_tab === 'IndexSongs' ? 'active' : ''" @click="changeTab('IndexSongs')" href='javascript:;'>音乐</li>
+        <li :class="selected_tab === 'IndexVideos' ? 'active' : ''" @click="changeTab('IndexVideos')" href='javascript:;'>视频</li>
+        <li :class="selected_tab === 'IndexFM' ? 'active' : ''" @click="changeTab('IndexFM')" href='javascript:;'>电台</li>
       </ul>
 
       <keep-alive>
@@ -17,11 +17,12 @@
 </template>
 
 <script>
-  import Heads from './common/Heads.vue'
-  import Foots from './common/Foots.vue'
+  import Heads from '@/components/common/Heads.vue'
+  import Foots from '@/components/common/Foots.vue'
   import IndexSongs from '@/components/Index/Songs'
   import IndexVideos from '@/components/Index/Videos'
   import IndexFM from '@/components/Index/FM'
+  import { setLocalStorage, removeLocalStorage } from '@/utils/utils.js'
   // import BScroll from 'better-scroll'
   let time
 
@@ -49,9 +50,15 @@
     methods: {
       changeTab (v) {
         this.type = v
-        console.log(v)
+        console.log(this.selected_tab)
         this.$store.commit('index_tab_isActive', v)
-        // console.log('index_active: ', this.selected_tab)
+        // 可以在点击之后将地址栏加上查询参数
+        // this.$router.push({
+        //   query: {
+        //     child: v
+        //   }
+        // })
+        setLocalStorage({index_route: v})
       },
       scrolling (e) {
         let now = new Date().getTime()
@@ -61,8 +68,10 @@
     },
     created () {
       console.log('index created ')
-      const type = this.$route.path.split('/').slice(-1)[0] || 'songs'
-      this.$store.commit('index_tab_isActive', type)
+      localStorage.removeItem('index_route')
+      console.log(removeLocalStorage)
+      // const type = this.$route.path.split('/').slice(-1)[0] || 'songs'
+      // this.$store.commit('index_tab_isActive', type)
       // console.log(this.$route)
       // console.log(type)
     },
