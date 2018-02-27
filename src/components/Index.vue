@@ -3,13 +3,13 @@
     <Heads></Heads>
     <div class="content" @scroll="scrolling">
       <ul class="tab">
-        <li :class="selected_tab === 'songs' ? 'active' : ''" @click="changeTab('songs')" href='javascript:;'>音乐</li>
-        <li :class="selected_tab === 'videos' ? 'active' : ''" @click="changeTab('videos')" href='javascript:;'>视频</li>
-        <li :class="selected_tab === 'fm' ? 'active' : ''" @click="changeTab('fm')" href='javascript:;'>电台</li>
+        <li :class="selected_tab === 'songs' ? 'active' : ''" @click="changeTab('IndexSongs')" href='javascript:;'>音乐</li>
+        <li :class="selected_tab === 'videos' ? 'active' : ''" @click="changeTab('IndexVideos')" href='javascript:;'>视频</li>
+        <li :class="selected_tab === 'fm' ? 'active' : ''" @click="changeTab('IndexFM')" href='javascript:;'>电台</li>
       </ul>
 
       <keep-alive>
-        <router-view></router-view>
+        <router-view :is="type"></router-view>
       </keep-alive>
     </div>
     <foots></foots>
@@ -19,18 +19,24 @@
 <script>
   import Heads from './common/Heads.vue'
   import Foots from './common/Foots.vue'
+  import IndexSongs from '@/components/Index/Songs'
+  import IndexVideos from '@/components/Index/Videos'
+  import IndexFM from '@/components/Index/FM'
   // import BScroll from 'better-scroll'
   let time
 
   export default {
     data () {
       return {
-
+        type: 'IndexSongs'
       }
     },
     components: {
       Heads,
-      Foots
+      Foots,
+      IndexSongs,
+      IndexVideos,
+      IndexFM
     },
     computed: {
       selected_tab () {
@@ -42,12 +48,8 @@
     },
     methods: {
       changeTab (v) {
-        this.$router.push({
-          name: v,
-          params: {
-            type: v
-          }
-        })
+        this.type = v
+        console.log(v)
         this.$store.commit('index_tab_isActive', v)
         // console.log('index_active: ', this.selected_tab)
       },
