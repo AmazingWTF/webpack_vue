@@ -5,27 +5,21 @@
       class="icon-bread bread">
     </div>
     <ul>
-      <router-link
-        to="/music"
-        tag="li"
+      <li
         class="icon-yinfu"
-        @click.native="$store.commit('isActive', 'music')"
+        @click="change_tab('music')"
         :class="{'active' : active === 'music'}">
-      </router-link>
-      <router-link
-        to="/index"
-        tag="li"
+      </li>
+      <li
         class="icon-logo"
-        @click.native="test"
+        @click="change_tab('index')"
         :class="{'active' : active === 'index'}">
-      </router-link>
-      <router-link
-        to="/friends"
-        tag="li"
+      </li>
+      <li
         class="icon-concat"
-        @click.native="$store.commit('isActive', 'friends')"
+        @click="change_tab('friends')"
         :class="{'active' : active === 'friends'}">
-      </router-link>
+      </li>
     </ul>
     <div class="icon-search" @click="search">
     </div>
@@ -51,8 +45,19 @@
           console.log(res)
         })
       },
-      test () {
-        this.$store.commit('isActive', 'index')
+      change_tab (type) {
+        this.$store.commit('isActive', type)
+        if (type === 'index') {
+          if (this.$store.state.index_route) {
+            console.log('the route_list in the store is not an empty array')
+            this.$router.push(this.$store.state.index_route)
+          }
+        } else {
+
+        }
+        this.$router.push({
+          path: `/${type}`
+        })
       }
     }
   }

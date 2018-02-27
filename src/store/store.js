@@ -10,10 +10,11 @@ setSessionStorage({
 })
 const store = new Vuex.Store({
   state: {
-    active: 'index',
+    active: 'index',  // 头部导航高亮
     mask_show: false,
-    index_active: 'songs',
-    index_status: ''
+    index_active: 'songs',  // index 页面tab高亮
+    index_status: '',
+    index_route: ''
   },
   mutations: {
     isActive (state, tag) {
@@ -25,10 +26,8 @@ const store = new Vuex.Store({
     maskShow (state) {
       state.mask_show = !state.mask_show
     },
-    change_index_status (state, route) {
-      // state.index_status = route
-      console.log('route----------')
-      console.log(route)
+    deal_index_route (state, path) {
+      state.index_route = path
     }
   }
 })

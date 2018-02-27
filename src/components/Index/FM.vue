@@ -10,7 +10,7 @@
       return {}
     },
     created () {
-      console.log(this.$route)
+      console.log('/index/fm created ')
     }
   }
 </script>

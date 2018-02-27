@@ -17,8 +17,10 @@
     name: 'app',
     watch: {
       $route (to, from) {
-        console.log('to: ', to)
-        console.log('from: ', from)
+        // console.log(to)
+        const path = to.path
+        // 已经访问过的路由
+        this.$store.commit('deal_index_route', path)
       }
     },
     created () {

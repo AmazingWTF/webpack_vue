@@ -58,11 +58,11 @@
       }
     },
     created () {
+      console.log('index created ')
       const type = this.$route.path.split('/').slice(-1)[0] || 'songs'
       this.$store.commit('index_tab_isActive', type)
       // console.log(this.$route)
       // console.log(type)
-      console.log('index created ')
     },
     mounted () {
       // console.log(this.$refs.index)
