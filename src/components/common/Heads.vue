@@ -23,15 +23,22 @@
     </ul>
     <div class="icon-search" @click="search">
     </div>
+
+    <Popup v-model="search_show" width="100%" height="100%" position="top" >
+      <div class="search">
+        <input value="enter the content what you want to search for" />
+      </div>
+    </Popup>
   </div>
 </template>
 
 <script>
   import fetch from '@/api/config.js'
+  import { Popup } from 'vux'
   export default {
     data () {
       return {
-        msg: 'Heads.vue'
+        search_show: false
       }
     },
     computed: {
@@ -41,6 +48,7 @@
     },
     methods: {
       search () {
+        this.search_show = true
         fetch(this, {url: '/search?q=周杰伦'}, (res) => {
           console.log(res)
         })
@@ -59,6 +67,9 @@
           path: `/${type}`
         })
       }
+    },
+    components: {
+      Popup
     }
   }
 </script>
@@ -104,6 +115,11 @@
     .icon-search {
       line-height: 78px;
       right: 20px;
+    }
+
+    .search {
+      width: 100%;
+      height: 100%;
     }
   }
 </style>

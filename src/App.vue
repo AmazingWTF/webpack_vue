@@ -4,10 +4,7 @@
     <keep-alive>
       <router-view/>
     </keep-alive>
-    <div
-      @click="$store.commit('maskShow')"
-      :class="$store.state.mask_show ? 'show': ''"
-      class="mask"></div>
+
   </div>
 </template>
 
@@ -15,6 +12,16 @@
   import SideBar from './components/common/SideBar.vue'
   export default {
     name: 'app',
+    data () {
+      return {
+        pop_status: false
+      }
+    },
+    computed: {
+      isLoading () {
+        return this.$store.state.loading_params
+      }
+    },
     watch: {
       $route (to, from) {
         // console.log(to)
@@ -24,6 +31,18 @@
       }
     },
     created () {
+      // this.$store.commit('loading', {
+      //   this_: this.$vux.loading,
+      //   params: {
+      //     text: 'xixiix',
+      //     position: 'fixed'
+      //   }
+      // })
+
+      console.log(this.$vux.pop)
+    },
+    mounted () {
+
     },
     components: {
       SideBar
@@ -47,6 +66,10 @@ html, body {
   color: #2c3e50;
   height: 100%;
   background-color: #fbfbfb;
+}
+
+a{
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {

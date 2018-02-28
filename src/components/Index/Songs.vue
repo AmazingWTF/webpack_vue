@@ -13,7 +13,7 @@
 
     <ul class="dashBoard">
       <router-link to="/" tag="li">
-        <div class="icon-fm media">
+        <div class="icon-fm media" @click="popup">
 
         </div>
         <div class="brief">私人fm</div>
@@ -116,10 +116,15 @@
       </ul>
     </div>
 
+    <Popup v-model="show" position="bottom" >
+      <p>/index/songs component</p>
+    </Popup>
+
   </div>
 </template>
 
 <script>
+  import { Popup, Group, Cell } from 'vux'
   export default {
     data () {
       return {
@@ -128,7 +133,19 @@
           'http://p1.music.126.net/gMbIT43nzQ-KlsdVwcS22w==/109951163098993364.jpg',
           'http://p1.music.126.net/B8LYkhNWoqNUvaeuU-gNkw==/109951163098475610.jpg',
           'http://p1.music.126.net/iybJ3sVLB28jwqc9xegDDg==/109951163098493350.jpg'
-        ]
+        ],
+        show: false
+      }
+    },
+    components: {
+      Popup,
+      Group,
+      Cell
+    },
+    methods: {
+      popup () {
+        this.show = !this.show
+        console.log(this.show)
       }
     },
     created () {

@@ -34,12 +34,4 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  // 全局导航守卫
-  // console.log('router guide')
-  // console.log('to', to)
-  // console.log('from', from)
-  next()
-})
-
 export default router

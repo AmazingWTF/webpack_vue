@@ -1,117 +1,118 @@
 <template>
-  <div class="tabBar" :class="$store.state.mask_show ? 'show' : ''">
-    <div class="wrapper">
-      <div class="my_info">
-        <img class="avatar" src="http://p3.music.126.net/wOPVWRdY3qC8Lgfsa9CGAg==/3441471409337079.jpg" />
+  <Popup v-model="$store.state.mask_show" width="80%" is-transparent position="left" >
+    <div class="tabBar">
+      <div class="wrapper">
+        <div class="my_info">
+          <img class="avatar" src="http://p3.music.126.net/wOPVWRdY3qC8Lgfsa9CGAg==/3441471409337079.jpg" />
 
-        <div class="words">
-          <div class="my_detail">
-            <div class="name">账号已注销</div>
-            <i class="level">lv.8</i>
-          </div>
-          <div class="register">
-            签到>
+          <div class="words">
+            <div class="my_detail">
+              <div class="name">账号已注销</div>
+              <i class="level">lv.8</i>
+            </div>
+            <div class="register">
+              签到>
+            </div>
           </div>
         </div>
-      </div>
 
-      <ul class="nav_lists">
-        <router-link to="/" tag="li">
-          <div class="icon-news icon">
-          </div>
-          <div class="title">
-            我的消息
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-vip icon">
-          </div>
-          <div class="title">
-            会员中心
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-store icon">
-          </div>
-          <div class="title">
-            商城
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-test icon">
-          </div>
-          <div class="title">
-            在线听歌免流量
-          </div>
-        </router-link>
-        <router-link class="mt" to="/" tag="li">
-          <div class="icon-concat icon">
-          </div>
-          <div class="title">
-            我的好友
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-near icon">
-          </div>
-          <div class="title">
-            附近的人
-          </div>
-        </router-link>
-        <router-link class="mt both" to="/" tag="li">
-          <div class="tag">
-            <div class="icon-skin icon">
+        <ul class="nav_lists">
+          <router-link to="/" tag="li">
+            <div class="icon-news icon">
             </div>
             <div class="title">
-              个性换肤
+              我的消息
             </div>
-          </div>
-          <div class="val">官方红</div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-listen icon">
-          </div>
-          <div class="title">
-            听歌识曲
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-settime icon">
-          </div>
-          <div class="title">
-            定时停止播放
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-test icon">
-          </div>
-          <div class="title">
-            扫一扫
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-news icon">
-          </div>
-          <div class="title">
-            音乐闹钟
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-news icon">
-          </div>
-          <div class="title">
-            驾驶模式
-          </div>
-        </router-link>
-        <router-link to="/" tag="li">
-          <div class="icon-news icon">
-          </div>
-          <div class="title">
-            音乐云盘
-          </div>
-        </router-link>
-      </ul>
-  </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-vip icon">
+            </div>
+            <div class="title">
+              会员中心
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-store icon">
+            </div>
+            <div class="title">
+              商城
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-test icon">
+            </div>
+            <div class="title">
+              在线听歌免流量
+            </div>
+          </router-link>
+          <router-link class="mt" to="/" tag="li">
+            <div class="icon-concat icon">
+            </div>
+            <div class="title">
+              我的好友
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-near icon">
+            </div>
+            <div class="title">
+              附近的人
+            </div>
+          </router-link>
+          <router-link class="mt both" to="/" tag="li">
+            <div class="tag">
+              <div class="icon-skin icon">
+              </div>
+              <div class="title">
+                个性换肤
+              </div>
+            </div>
+            <div class="val">官方红</div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-listen icon">
+            </div>
+            <div class="title">
+              听歌识曲
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-settime icon">
+            </div>
+            <div class="title">
+              定时停止播放
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-test icon">
+            </div>
+            <div class="title">
+              扫一扫
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-news icon">
+            </div>
+            <div class="title">
+              音乐闹钟
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-news icon">
+            </div>
+            <div class="title">
+              驾驶模式
+            </div>
+          </router-link>
+          <router-link to="/" tag="li">
+            <div class="icon-news icon">
+            </div>
+            <div class="title">
+              音乐云盘
+            </div>
+          </router-link>
+        </ul>
+      </div>
 
       <ul class="tool_bar">
         <router-link to="/" tag="li">
@@ -137,27 +138,43 @@
         </router-link>
       </ul>
     </div>
+  </Popup>
 </template>
 
 <script>
+  import { Popup } from 'vux'
   export default {
-    name: 'SideBar'
+    name: 'SideBar',
+    data () {
+      return {
+        testShow: false
+      }
+    },
+    methods: {
+      showMask () {
+        this.testShow = !this.testShow
+      }
+    },
+    components: {
+      Popup
+    }
   }
 </script>
 
 <style lang="less" scoped>
   .tabBar {
-    position: absolute;
-    z-index: 10;
-    width: 80%;
+    display: inline-block;
+    position: relative;
+    // z-index: 10;
+    width: 100%;
     background-color: #fff;
     height: 100%;
-    transition: all .3s linear;
-    transform: translate3d(-100%, 0, 0);
+    // transition: all .3s linear;
+    // transform: translate3d(-100%, 0, 0);
     padding-bottom: 37px;
-    &.show {
-      transform: translate3d(0, 0, 0);
-    }
+    // &.show {
+    //   transform: translate3d(0, 0, 0);
+    // }
     ul > li {
       display: flex;
       .tag {
@@ -248,7 +265,7 @@
 
     .tool_bar {
       background-color: #fff;
-      position: fixed;
+      position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;

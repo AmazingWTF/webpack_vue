@@ -70,17 +70,8 @@
       console.log('index created ')
       localStorage.removeItem('index_route')
       console.log(removeLocalStorage)
-      // const type = this.$route.path.split('/').slice(-1)[0] || 'songs'
-      // this.$store.commit('index_tab_isActive', type)
-      // console.log(this.$route)
-      // console.log(type)
     },
     mounted () {
-      // console.log(this.$refs.index)
-      // console.log(BScroll)
-      // this.$nextTick(() => {
-      //   this.scroll = new BScroll(this.$refs.index, {})
-      // })
     }
   }
 </script>

@@ -14,7 +14,9 @@ const store = new Vuex.Store({
     mask_show: false,
     index_active: 'IndexSongs',  // index 页面tab高亮
     index_status: '',
-    index_route: ''
+    index_route: '',
+    // loading 参数
+    loading_params: {}
   },
   mutations: {
     isActive (state, tag) {
@@ -25,9 +27,15 @@ const store = new Vuex.Store({
     },
     maskShow (state) {
       state.mask_show = !state.mask_show
+      console.log(state.mask_show)
     },
     deal_index_route (state, path) {
       state.index_route = path
+    },
+    // 公共状态 such as loading
+    loading (state, params) {
+      state.loading_params = params.params
+      params.this_.show(params.params)
     }
   }
 })
