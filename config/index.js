@@ -4,9 +4,10 @@
 
 const path = require('path')
 
+// 判断是否需要手机调试
+const isMobile = process.argv[2]
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -45,10 +46,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, isMobile === 'isMobile' ? '../server_dist/dist/index.html' : '../dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, isMobile === 'isMobile' ? '../server_dist/dist' : '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
