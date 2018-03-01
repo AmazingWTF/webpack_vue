@@ -4,11 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from '@/store/store.js'
-import vueResource from 'vue-resource'
 import { LoadingPlugin } from 'vux'
 
 Vue.config.productionTip = false
-Vue.use(vueResource)
+// Vue.use(axios)
 Vue.use(LoadingPlugin)
 /* eslint-disable no-new */
 

@@ -78,6 +78,11 @@ a{
   display: none !important;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
 .mask {
   position: fixed;
   left: 0;

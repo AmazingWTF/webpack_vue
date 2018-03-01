@@ -24,9 +24,14 @@
     <div class="icon-search" @click="search">
     </div>
 
-    <Popup v-model="search_show" width="100%" height="100%" position="top" >
+    <Popup class="pop" height="100%" v-model="search_show" :is-transparent="true" width="100%" position="top">
       <div class="search">
-        <input value="enter the content what you want to search for" />
+        <div class="search_header">
+          <div class="icon-night search_back_icon" @click="hide_pop">
+          </div>
+          <input class="search_input" placeholder="enter something" autofocus/>
+
+        </div>
       </div>
     </Popup>
   </div>
@@ -34,11 +39,25 @@
 
 <script>
   import fetch from '@/api/config.js'
-  import { Popup } from 'vux'
+  import { Popup, Panel } from 'vux'
   export default {
     data () {
       return {
-        search_show: false
+        search_show: false,
+        type: '1',
+        header: 'header-words',
+        footer: {
+          url: '/',
+          title: 'footer-title'
+        },
+        list: [
+          {
+            src: 'javascript:void(0);',
+            title: 'title-1',
+            desc: 'content-1',
+            url: '/'
+          }
+        ]
       }
     },
     computed: {
@@ -66,10 +85,14 @@
         this.$router.push({
           path: `/${type}`
         })
+      },
+      hide_pop () {
+        this.search_show = false
       }
     },
     components: {
-      Popup
+      Popup,
+      Panel
     }
   }
 </script>
@@ -117,9 +140,43 @@
       right: 20px;
     }
 
-    .search {
-      width: 100%;
-      height: 100%;
+    .pop {
+      position: fixed;
+      .search {
+        background-color: #fff;
+        width: 100%;
+        .search_header {
+          background-color: @bg-red;
+          padding: 20px 3px 10px 0;
+          display: -webkit-flex;
+          display: flex;
+          line-height: 35px;
+          .search_back_icon {
+            padding: 0 10px;
+          }
+          .search_input {
+            height: 100%;
+            -webkit-flex: 1;
+            flex: 1;
+            height: 35px;
+            background-color: @bg-red;
+            font-size: 16px;
+            color: #ddd;
+            letter-spacing: 1px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border-bottom: 1px solid #bbb;
+            padding-right: 30px;
+            &::-webkit-input-placeholder {
+              color: #fff;
+              opacity: .4;
+            }
+          }
+
+        }
+      }
     }
+
+
   }
 </style>
