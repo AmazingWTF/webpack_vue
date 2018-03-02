@@ -7,7 +7,7 @@
         </li>
       </ul>
       <ul class="cornerMark">
-        <li v-for="item of banner"></li>
+        <li v-for="(item, index) of banner" :key="index"></li>
       </ul>
     </div>
 
