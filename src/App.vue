@@ -57,6 +57,10 @@ html, body {
   height: 100%;
 }
 
+* {
+  line-height: 1;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -69,6 +73,8 @@ html, body {
 a{
   -webkit-tap-highlight-color: transparent;
 }
+
+a{text-decoration:none;}
 
 ::-webkit-scrollbar {
   width: 0px;
