@@ -29,7 +29,7 @@
         <div class="search_header">
           <div class="icon-night search_back_icon" @click="hide_pop">
           </div>
-          <input class="search_input" placeholder="enter something" autofocus/>
+          <input ref="search_input" class="search_input" placeholder="enter something"/>
 
         </div>
       </div>
@@ -38,7 +38,6 @@
 </template>
 
 <script>
-  import fetch from '@/api/config.js'
   import { Popup, Panel } from 'vux'
   export default {
     data () {
@@ -68,8 +67,9 @@
     methods: {
       search () {
         this.search_show = true
-        fetch(this, {url: '/search?q=周杰伦'}, (res) => {
-          console.log(res)
+        console.log(this.$refs.search_input)
+        setTimeout(() => {
+          this.$refs.search_input.focus()
         })
       },
       change_tab (type) {

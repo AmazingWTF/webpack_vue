@@ -67,9 +67,8 @@
       }
     },
     created () {
-      console.log('index created ')
       localStorage.removeItem('index_route')
-      console.log(removeLocalStorage)
+      if (this.false) removeLocalStorage()
     },
     mounted () {
     }

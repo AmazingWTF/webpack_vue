@@ -1,8 +1,6 @@
-# webpack_vue
+# webpack_enter_new
 
 > A Vue.js project
-
-
 
 ## Build Setup
 
@@ -28,9 +26,9 @@ npm run e2e
 # run all tests
 npm test
 
-#run mobile debug
-npm run mobile
-执行命令之后，会执行一次build命令，但是目标目录在server_dist文件夹中，并且开启8081端口，手机和电脑连接同一个局域网之后即可手机调试
+## attention
+config/index.js 中 dev 里面的host改为本地ip地址，即可实现开发中真机调试项目 (现在为我的地址，想要在本地跑起来需要修改为自己的ip地址)
+
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

@@ -38,8 +38,6 @@
       //     position: 'fixed'
       //   }
       // })
-
-      console.log(this.$vux.pop)
     },
     mounted () {
 
