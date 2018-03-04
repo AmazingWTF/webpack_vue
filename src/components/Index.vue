@@ -17,8 +17,8 @@
 </template>
 
 <script>
-  import Heads from '@/components/common/Heads.vue'
-  import Foots from '@/components/common/Foots.vue'
+  import Heads from '@/components/common/Heads'
+  import Foots from '@/components/common/Foots'
   import IndexSongs from '@/components/Index/Songs'
   import IndexVideos from '@/components/Index/Videos'
   import IndexFM from '@/components/Index/FM'

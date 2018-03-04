@@ -14,6 +14,7 @@ const store = new Vuex.Store({
     mask_show: false,
     index_active: 'IndexSongs',  // index 页面tab高亮
     index_status: '',
+    search_show: false,  // 搜索弹框显示
     index_route: '',
     // loading 参数
     loading_params: {}
@@ -36,6 +37,9 @@ const store = new Vuex.Store({
     loading (state, params) {
       state.loading_params = params.params
       params.this_.show(params.params)
+    },
+    change_search_status (state, bol) {
+      state.search_show = bol
     }
   }
 })
