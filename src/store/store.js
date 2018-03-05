@@ -17,7 +17,9 @@ const store = new Vuex.Store({
     search_show: false,  // 搜索弹框显示
     index_route: '',
     // loading 参数
-    loading_params: {}
+    loading_params: {},
+    // search tab 状态
+    search_type: 'SearchIndex'
   },
   mutations: {
     isActive (state, tag) {
@@ -40,6 +42,10 @@ const store = new Vuex.Store({
     },
     change_search_status (state, bol) {
       state.search_show = bol
+    },
+    // search tab状态
+    change_search_tab (state, type) {
+      state.search_type = type
     }
   }
 })

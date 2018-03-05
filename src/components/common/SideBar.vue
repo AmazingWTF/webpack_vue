@@ -169,12 +169,7 @@
     width: 100%;
     background-color: #fff;
     height: 100%;
-    // transition: all .3s linear;
-    // transform: translate3d(-100%, 0, 0);
     padding-bottom: 37px;
-    // &.show {
-    //   transform: translate3d(0, 0, 0);
-    // }
     ul > li {
       display: flex;
       .tag {

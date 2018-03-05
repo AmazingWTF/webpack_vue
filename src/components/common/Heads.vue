@@ -42,7 +42,6 @@
         this.$store.commit('isActive', type)
         if (type === 'index') {
           if (this.$store.state.index_route) {
-            console.log('the route_list in the store is not an empty array')
             this.$router.push(this.$store.state.index_route)
           }
         } else {
@@ -53,9 +52,7 @@
       },
       show_search () {
         this.$store.commit('change_search_status', true)
-        setTimeout(() => {
-          console.log(this.$store.state.search_show)
-        })
+        this.$store.commit('change_search_tab', 'SearchIndex')
       }
     },
     components: {
