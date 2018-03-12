@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setSessionStorage } from '@/utils/utils.js'
 
 Vue.use(Vuex)
-let d = +new Date()
-setSessionStorage({
-  type: 'store' + d,
-  name: 'wallmart' + d
-})
 const store = new Vuex.Store({
   state: {
     active: 'index',  // 头部导航高亮
