@@ -22,6 +22,9 @@ module.exports = {
       console.warn('function setSessionStorage\'s params must be an array or a string')
     }
   },
+  getSessionStorage (key) {
+    return sessionStorage.getItem(key)
+  },
   // processing LocalStorage
   setLocalStorage (obj) {
     if ((obj instanceof Object) && !(obj instanceof Array)) {
@@ -45,6 +48,9 @@ module.exports = {
     } else {
       console.warn('function setLocalStorage\'s params must be an array or a string')
     }
+  },
+  getLocalStorage (key) {
+    return localStorage.getItem(key)
   }
 
 }

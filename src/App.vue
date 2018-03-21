@@ -105,4 +105,11 @@ input {
   }
 }
 
+img[lazy=loading],
+img[lazy=error] {
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
 </style>

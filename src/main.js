@@ -5,10 +5,18 @@ import App from './App'
 import router from './router'
 import store from '@/store/store.js'
 import { LoadingPlugin } from 'vux'
+import VueLazyload from 'vue-lazyload'
+import { loadingImg, errorImg } from '@/assets/img/img'
 
 Vue.config.productionTip = false
 // Vue.use(axios)
 Vue.use(LoadingPlugin)
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: errorImg,
+  loading: loadingImg,
+  attempt: 1
+})
 /* eslint-disable no-new */
 
 new Vue({
