@@ -2,15 +2,12 @@
   <div ref="index" class="index">
     <Heads></Heads>
     <div class="content" @scroll="scrolling">
-      <ul class="tab">
-        <li :class="selected_tab === 'IndexSongs' ? 'active' : ''" @click="changeTab('IndexSongs')" href='javascript:;'>音乐</li>
-        <li :class="selected_tab === 'IndexVideos' ? 'active' : ''" @click="changeTab('IndexVideos')" href='javascript:;'>视频</li>
-        <li :class="selected_tab === 'IndexFM' ? 'active' : ''" @click="changeTab('IndexFM')" href='javascript:;'>电台</li>
-      </ul>
+      <div class="tab">
+        <router-link to="songs">songs</router-link>
+        <router-link to="videos">videos</router-link>
+      </div>
 
-      <keep-alive>
-        <router-view :is="type"></router-view>
-      </keep-alive>
+      <router-view></router-view>
     </div>
     <foots></foots>
   </div>
@@ -19,8 +16,6 @@
 <script>
   import Heads from '@/components/common/Heads'
   import Foots from '@/components/common/Foots'
-  import IndexSongs from '@/components/Index/Songs'
-  import IndexVideos from '@/components/Index/Videos'
   import IndexFM from '@/components/Index/FM'
   import { setLocalStorage, removeLocalStorage } from '@/utils/utils.js'
   // import BScroll from 'better-scroll'
@@ -35,8 +30,6 @@
     components: {
       Heads,
       Foots,
-      IndexSongs,
-      IndexVideos,
       IndexFM
     },
     computed: {
@@ -77,6 +70,10 @@
 
 <style lang="less">
   @import '../assets/common/less/mixin.less';
+  .router-link-exact-active {
+    color: #ffccc9 !important;
+    border-bottom: 2px solid #ffccc9 !important;
+  }
   .index {
     height: 100%;
     display: flex;
@@ -93,9 +90,9 @@
         top: 64px;
         width: 100%;
         z-index: 1;
-        background-color: #fff;
+        background-color: @bg-red;
         justify-content: space-around;
-        li {
+        a {
           text-align: center;
           padding: 0 15px;
           height: 35px;
@@ -103,10 +100,7 @@
           border-bottom: 2px solid transparent;
           font-size: 14px;
           transition: border .5s;
-          &.active {
-            border-color: @font-red;
-            color: @font-red;
-          }
+          color: #fff;
         }
       }
     }

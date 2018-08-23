@@ -16,3 +16,7 @@ img {
   display: block;
   width: 100%;
 }
+
+.test {
+  background-image: url('../img/error.jpg');
+}
