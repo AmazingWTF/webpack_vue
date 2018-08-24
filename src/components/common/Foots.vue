@@ -1,7 +1,9 @@
 <template>
   <div class="footer">
     <div class="cover_img">
-      <img src="./logo.png" />
+      <!--
+        <img src="./logo.png" />
+      -->
     </div>
 
     <div class="contorller">

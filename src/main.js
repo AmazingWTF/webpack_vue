@@ -9,7 +9,6 @@ import VueLazyload from 'vue-lazyload'
 import { loadingImg, errorImg } from '@/assets/img/img'
 
 Vue.config.productionTip = false
-// Vue.use(axios)
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin, {position: 'top'})
 Vue.use(VueLazyload, {

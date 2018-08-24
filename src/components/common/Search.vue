@@ -4,17 +4,18 @@
       <div class="search_header">
         <div class="icon-night search_back_icon" @click="hide_search">
         </div>
-        <input ref="search_input" class="search_input" placeholder="enter something" v-model="searchKeyWords"/>
+        <input ref="search_input" class="search_input" @keyup.enter="search" placeholder="enter something" v-model="searchKeyWords"/>
         <div class="icon-search search_back_icon search_icon" @click="search">
 
         </div>
       </div>
-      <router-view :is="type"></router-view>
+      <router-view :results="results" :is="type"></router-view>
     </div>
   </Popup>
 </template>
 
 <script>
+  import axios from 'axios'
   import { Popup } from 'vux'
   import SearchIndex from '@/components/common/Search/Index'
   import SearchResult from '@/components/common/Search/Result'
@@ -23,7 +24,8 @@
   export default {
     data () {
       return {
-        searchKeyWords: ''
+        searchKeyWords: '',
+        results: null
       }
     },
     created () {
@@ -52,10 +54,22 @@
         this.search_show = false
       },
       search () {
+        let _this = this
         let searchKeyWords = this.searchKeyWords.trim()
         if (!searchKeyWords) return
-        api.search(searchKeyWords)
-        this.type = 'SearchResult'
+        axios.get(api.search, {
+          params: {
+            q: searchKeyWords
+          }
+        })
+        .then(function (res) {
+          console.log(res)
+          _this.type = 'SearchResult'
+          _this.results = res.data.musics
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
         let local = utils.getLocalStorage('search_history')
         if (local) {
           local = local.split(',')
@@ -93,6 +107,8 @@
         display: -webkit-flex;
         display: flex;
         line-height: 35px;
+        height: 35px;
+        box-sizing: content-box;
         .search_back_icon {
           padding: 0 10px;
           font-size: 24px;
