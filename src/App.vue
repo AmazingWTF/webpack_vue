@@ -11,6 +11,7 @@
 <script>
   import SideBar from './components/common/SideBar.vue'
   import Search from '@/components/common/Search'
+
   export default {
     name: 'app',
     data () {

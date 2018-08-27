@@ -15,11 +15,10 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import { Popup } from 'vux'
   import SearchIndex from '@/components/common/Search/Index'
   import SearchResult from '@/components/common/Search/Result'
-  import * as api from '@/api/api'
+  import api from '@/api/api'
   import * as utils from '@/utils/utils'
   export default {
     data () {
@@ -57,19 +56,17 @@
         let _this = this
         let searchKeyWords = this.searchKeyWords.trim()
         if (!searchKeyWords) return
-        axios.get(api.search, {
-          params: {
-            q: searchKeyWords
-          }
+        api.search({
+          q: searchKeyWords
         })
-        .then(function (res) {
-          console.log(res)
-          _this.type = 'SearchResult'
-          _this.results = res.data.musics
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+          .then(function (res) {
+            console.log(res)
+            _this.type = 'SearchResult'
+            _this.results = res.data.musics
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
         let local = utils.getLocalStorage('search_history')
         if (local) {
           local = local.split(',')
