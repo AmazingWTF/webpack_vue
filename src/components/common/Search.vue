@@ -9,13 +9,15 @@
 
         </div>
       </div>
-      <router-view :results="results" :is="type"></router-view>
+      <router-view class="search_result" :results="results" :is="search_type"></router-view>
     </div>
   </Popup>
 </template>
 
 <script>
   import { Popup } from 'vux'
+
+  import { mapGetters, mapMutations } from 'vuex'
   import SearchIndex from '@/components/common/Search/Index'
   import SearchResult from '@/components/common/Search/Result'
   import api from '@/api/api'
@@ -31,26 +33,26 @@
       console.log('search created')
     },
     computed: {
+      ...mapGetters([
+        // 'search_show',
+        'search_type'
+      ]),
       search_show: {
         get () {
-          return this.$store.state.search_show
+          return this.$store.state.search.search_show
         },
-        set (bol) {
-          this.$store.commit('change_search_status', bol)
-        }
-      },
-      type: {
-        get () {
-          return this.$store.state.search_type
-        },
-        set (params) {
-          this.$store.state.search_type = params
+        set (newVal) {
+          this.$store.state.search.search_show = newVal
         }
       }
     },
     methods: {
+      ...mapMutations([
+        'change_search_status',
+        'change_search_tab'
+      ]),
       hide_search () {
-        this.search_show = false
+        this.change_search_status(false)
       },
       search () {
         let _this = this
@@ -61,7 +63,7 @@
         })
           .then(function (res) {
             console.log(res)
-            _this.type = 'SearchResult'
+            _this.change_search_tab('SearchResult')
             _this.results = res.data.musics
           })
           .catch(function (error) {
@@ -99,9 +101,12 @@
       width: 100%;
       height: 100%;
       .search_header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
         background-color: @bg-red;
-        padding: 20px 3px 10px 0;
-        display: -webkit-flex;
+        padding: 20px 0 10px 0;
         display: flex;
         line-height: 35px;
         height: 35px;
@@ -131,6 +136,14 @@
           border-bottom: 1px solid #bbb;
           height: 100%;
         }
+      }
+
+      .search_result {
+        // box-sizing: border-box;
+        padding-top: 65px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
       }
     }
   }

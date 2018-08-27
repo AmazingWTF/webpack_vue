@@ -11,6 +11,7 @@
 <script>
   import SideBar from './components/common/SideBar.vue'
   import Search from '@/components/common/Search'
+  import { mapMutations } from 'vuex'
 
   export default {
     name: 'app',
@@ -20,9 +21,11 @@
       }
     },
     computed: {
-      isLoading () {
-        return this.$store.state.loading_params
-      }
+    },
+    methods: {
+      ...mapMutations([
+        'isActive'
+      ])
     },
     watch: {
       $route (to, from) {
@@ -30,7 +33,7 @@
       }
     },
     created () {
-      this.$store.commit('isActive', this.$route.path.slice(1))
+      this.isActive(this.$route.path.slice(1))
       // this.$store.commit('loading', {
       //   this_: this.$vux.loading,
       //   params: {

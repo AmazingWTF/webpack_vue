@@ -27,19 +27,27 @@
 </template>
 
 <script>
+  import { mapMutations, mapGetters } from 'vuex'
   export default {
     data () {
       return {
       }
     },
     computed: {
-      active () {
-        return this.$store.state.active
-      }
+      ...mapGetters([
+        'active',
+        'search_show',
+        'search_type'
+      ])
     },
     methods: {
+      ...mapMutations([
+        'isActive',
+        'change_search_status',
+        'change_search_tab'
+      ]),
       change_tab (type) {
-        this.$store.commit('isActive', type)
+        this.isActive(type)
         if (type === 'index') {
           if (this.$store.state.index_route) {
             this.$router.push(this.$store.state.index_route)
@@ -51,8 +59,8 @@
         })
       },
       show_search () {
-        this.$store.commit('change_search_status', true)
-        this.$store.commit('change_search_tab', 'SearchIndex')
+        this.change_search_status(true)
+        this.change_search_tab('SearchIndex')
       }
     },
     components: {

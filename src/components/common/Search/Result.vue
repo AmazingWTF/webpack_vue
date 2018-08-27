@@ -1,18 +1,17 @@
 <template>
   <div class="search_result">
     <div class="result_container" ref="container">
-      <ul class="result_wrapper" ref="inner">
-        <li
+      <swiper :options="op" class="tab_container">
+        <swiperSlide
           class="tab_item"
           v-for="(item, index) in tabList"
           :key="index">
           {{ item }}
-        </li>
-      </ul>
+        </swiperSlide>
+      </swiper>
 
-      <swiper class="content" ref="inner">
+      <swiper :slidesPerView="5" class="content" ref="inner">
         <swiperSlide
-          class="tab_item"
           v-for="(item, index) in tabList"
           :key="index">
           <ul>
@@ -30,19 +29,44 @@
 </template>
 
 <script>
-  // {{item.title + ' - ' + item.author[0].name}}
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   import 'swiper/dist/css/swiper.css'
+
   const tabList = ['单曲', '歌手', '专辑', '歌单', '视频', '主播电台', '用户']
   export default {
     data () {
       return {
         tabList,
+        op: {
+          slidesPerView: 'auto',
+          direction: 'horizontal',
+          spaceBetween: 10
+        },
+        swiperOptions: {
+          direction: 'horizontal',
+          allowSlideNext: false,
+          allowSlidePrev: false,
+          on: {
+            init () {
+              console.log('init')
+              console.log(this.activeIndex)
+            },
+            click () {
+              console.log('click')
+              console.log(this.activeIndex)
+            },
+            transitionEnd () {
+              // console.log()
+            }
+          }
+        },
         type: 0 // 当前选择搜索结果分类
       }
     },
     created () {
       console.log('result created')
+    },
+    mounted () {
     },
     props: ['results'],
     components: {
@@ -56,25 +80,34 @@
 @import '../../../assets/common/less/mixin.less';
 .search_result {
   .result_container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     .result_wrapper {
       display: flex;
       flex-wrap: nowrap;
       width: auto;
       overflow-x: scroll;
-      .tab_item {
-        white-space: nowrap;
-        font-size: 14px;
-        line-height: 2;
-        padding: 0 20px;
-        width: auto !important;
-      }
-      .tab_item.actived {
-        border-bottom: 2px solid @bg-red;
-      }
+      height: 64px;
+      line-height: 64px;
     }
   }
 }
+.tab_container {
+  background-image: radial-gradient(circle at center, #ffe5e5, #fff);
+  height: 68px;
+  .tab_item {
+    white-space: nowrap;
+    font-size: 14px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 20px;
+  }
+  .tab_item.actived {
+    border-bottom: 2px solid @bg-red;
+  }
+}
+
 .item-title {
   color: lightblue;
   font-size: 16px;
@@ -87,9 +120,18 @@ p {
 ul {
   width: 100%;
 }
+li {
+  padding-top: 8px;
+  padding-left: 14px;
+}
+p {
+  font-size: 14px;
+  line-height: 1.4em;
+}
 .content {
   display: flex;
-  flex-direction: column;
   overflow-y: scroll;
+  flex-direction: column;
+  width: 100%;
 }
 </style>
