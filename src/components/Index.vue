@@ -7,7 +7,9 @@
         <router-link to="videos">videos</router-link>
       </div>
 
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <foots></foots>
   </div>
@@ -70,7 +72,7 @@
 
 <style lang="less">
   @import '../assets/common/less/mixin.less';
-  .router-link-exact-active {
+  .tab .router-link-exact-active {
     color: #ffccc9 !important;
     border-bottom: 2px solid #ffccc9 !important;
   }

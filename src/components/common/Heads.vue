@@ -1,25 +1,25 @@
 <template>
   <div class="header">
     <div
-      @click="$store.commit('maskShow')"
+      @click="showSideBar(true)"
       class="icon-bread bread">
     </div>
     <ul>
-      <li
+      <router-link
+        :active-class="'active'"
+        tag="li"
         class="icon-yinfu"
-        @click="change_tab('music')"
-        :class="{'active' : active === 'music'}">
-      </li>
-      <li
+        to="/music"></router-link>
+      <router-link
+        :active-class="'active'"
+        tag="li"
         class="icon-logo"
-        @click="change_tab('index')"
-        :class="{'active' : active === 'index'}">
-      </li>
-      <li
+        to="/index"></router-link>
+      <router-link
+        :active-class="'active'"
+        tag="li"
         class="icon-concat"
-        @click="change_tab('friends')"
-        :class="{'active' : active === 'friends'}">
-      </li>
+        to="/friends"></router-link>
     </ul>
     <div class="icon-search" @click="show_search">
     </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import { mapMutations, mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     data () {
       return {
@@ -41,26 +41,14 @@
       ])
     },
     methods: {
-      ...mapMutations([
-        'isActive',
-        'change_search_status',
-        'change_search_tab'
+      ...mapActions([
+        'searchShow',
+        'changeSearchType',
+        'showSideBar'
       ]),
-      change_tab (type) {
-        this.isActive(type)
-        if (type === 'index') {
-          if (this.$store.state.index_route) {
-            this.$router.push(this.$store.state.index_route)
-          }
-        } else {
-        }
-        this.$router.push({
-          path: `/${type}`
-        })
-      },
       show_search () {
-        this.change_search_status(true)
-        this.change_search_tab('SearchIndex')
+        this.searchShow(true)
+        this.changeSearchType('SearchIndex')
       }
     },
     components: {

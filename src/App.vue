@@ -24,7 +24,6 @@
     },
     methods: {
       ...mapMutations([
-        'isActive'
       ])
     },
     watch: {
@@ -33,14 +32,7 @@
       }
     },
     created () {
-      this.isActive(this.$route.path.slice(1))
-      // this.$store.commit('loading', {
-      //   this_: this.$vux.loading,
-      //   params: {
-      //     text: 'xixiix',
-      //     position: 'fixed'
-      //   }
-      // })
+      // this.isActive(this.$route.path.slice(1))
     },
     mounted () {
 

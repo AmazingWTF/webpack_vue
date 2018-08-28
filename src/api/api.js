@@ -26,5 +26,11 @@ export default {
     return axios.get(pre + '/music/search', {
       params
     })
+  },
+
+  getInTheathersMovie (params) {
+    return axios.get(pre + '/movie/in_theaters', {
+      params
+    })
   }
 }

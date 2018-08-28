@@ -1,46 +1,62 @@
 <template>
   <div class="videos">
-    <canvas class="can" id="can"></canvas>
+    <ul class="video-list">
+      <li
+        v-for="(item, index) in videoList"
+        :key="index"
+        class="video-item">
+        <img class="video-avator" :src="item.images.small" />
+        <div class="video-detail">
+          <p>{{item.title}}</p>
+          <p>上映时间：<span class="yellow">{{item.year}}</span></p>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+  import api from '@/api/api'
+
   export default {
     data () {
-      return {}
-    },
-    mounted () {
-      let can = document.querySelector('#can')
-      console.log(can.id)
-
-      let ctx = can.getContext('2d')
-
-      ctx.beginPath()
-      ctx.fillStyle = 'yellow'
-      ctx.moveTo(0, 0)
-      ctx.lineTo(0, 100)
-      ctx.lineTo(100, 100)
-      ctx.closePath()
-      ctx.fill()
-      ctx.beginPath()
-      ctx.lineWidth = 3
-      ctx.strokeStyle = 'red'
-      ctx.moveTo(-1, 0)
-      ctx.lineTo(-1, 101)
-      ctx.lineTo(101, 101)
-      ctx.closePath()
-      ctx.stroke()
+      return {
+        videoList: []
+      }
     },
     created () {
-      console.log('/index/videos created ')
+      let _this = this
+      api.getInTheathersMovie({
+        city: '上海'
+      })
+        .then(res => {
+          console.log(res)
+          _this.videoList = [...res.data.subjects]
+        })
+    },
+    activated () {
+      console.log('activated')
+    },
+    mounted () {
     }
   }
 </script>
 
 <style lang="less" scoped>
-  canvas {
-    display: block;
-    margin: 30px auto 0;
-    border: 1px solid #000;
-  }
+.video-list {
+
+}
+
+.video-item {
+  display: flex;
+}
+
+.video-avator {
+  width: 80px;
+  height: 120px;
+}
+
+.video-detail {
+  flex: 1;
+}
 </style>

@@ -9,7 +9,7 @@
 
         </div>
       </div>
-      <router-view class="search_result" :results="results" :is="search_type"></router-view>
+      <router-view class="search_result" :searchKeyWords="searchKeyWords" :result="results" :is="search_type"></router-view>
     </div>
   </Popup>
 </template>
@@ -17,10 +17,9 @@
 <script>
   import { Popup } from 'vux'
 
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters, mapMutations, mapActions } from 'vuex'
   import SearchIndex from '@/components/common/Search/Index'
   import SearchResult from '@/components/common/Search/Result'
-  import api from '@/api/api'
   import * as utils from '@/utils/utils'
   export default {
     data () {
@@ -34,7 +33,6 @@
     },
     computed: {
       ...mapGetters([
-        // 'search_show',
         'search_type'
       ]),
       search_show: {
@@ -49,18 +47,20 @@
     methods: {
       ...mapMutations([
         'change_search_status',
-        'change_search_tab'
+        'change_search_tab',
+        'changeIndexActivedTab'
+      ]),
+      ...mapActions([
+        'getSearchResult'
       ]),
       hide_search () {
-        this.change_search_status(false)
+        this.changeIndexActivedTab(false)
       },
       search () {
         let _this = this
         let searchKeyWords = this.searchKeyWords.trim()
         if (!searchKeyWords) return
-        api.search({
-          q: searchKeyWords
-        })
+        this
           .then(function (res) {
             console.log(res)
             _this.change_search_tab('SearchResult')

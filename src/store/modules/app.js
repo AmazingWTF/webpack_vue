@@ -1,22 +1,31 @@
+import types from '../mutation-types'
+
 const state = {
   active: 'index',
   mask_show: false
 }
 
 const getters = {
-  active: state => state.active
+  active: state => state.active,
+  mask_show: state => state.mask_show
+}
+
+const actions = {
+  changeIndexActivedTab ({commit}, type) {
+    commit(types.HOME_TAB_ACTIVED, type)
+  },
+  showSideBar ({commit}, bol) {
+    commit(types.MASK_SHOW, bol)
+  }
 }
 
 // 只能是同步操作
 const mutations = {
-  isActive (state, tag) {
+  [types.HOME_TAB_ACTIVED] (state, tag) {
     state.active = tag
   },
-  index_tab_active (state, tag) {
-    state.index_active = tag
-  },
-  maskShow (state) {
-    state.mask_show = !state.mask_show
+  [types.MASK_SHOW] (state, bol) {
+    state.mask_show = bol
   }
 }
 
@@ -25,5 +34,6 @@ const mutations = {
 export default {
   state,
   getters,
+  actions,
   mutations
 }
