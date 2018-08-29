@@ -142,35 +142,35 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-  import { Popup } from 'vux'
+import { mapActions } from 'vuex'
+import { Popup } from 'vux'
 
-  export default {
-    name: 'SideBar',
-    data () {
-      return {
-        testShow: false
-      }
-    },
-    computed: {
-      mask_show: {
-        get () {
-          return this.$store.state.app.mask_show
-        },
-        set (bol) {
-          this.showSideBar(bol)
-        }
-      }
-    },
-    methods: {
-      ...mapActions([
-        'showSideBar'
-      ])
-    },
-    components: {
-      Popup
+export default {
+  name: 'SideBar',
+  data () {
+    return {
+      testShow: false
     }
+  },
+  computed: {
+    mask_show: {
+      get () {
+        return this.$store.state.app.mask_show
+      },
+      set (bol) {
+        this.showSideBar(bol)
+      }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'showSideBar'
+    ])
+  },
+  components: {
+    Popup
   }
+}
 </script>
 
 <style lang="less" scoped>

@@ -7,22 +7,22 @@
 </template>
 
 <script>
-  import Heads from './common/Heads.vue'
-  import Foots from './common/Foots.vue'
-  export default {
-    data () {
-      return {
-        msg: 'MyFriends.vue msg'
-      }
-    },
-    created () {
-      console.log('friends create')
-    },
-    components: {
-      Heads,
-      Foots
+import Heads from './common/Heads.vue'
+import Foots from './common/Foots.vue'
+export default {
+  data () {
+    return {
+      msg: 'MyFriends.vue msg'
     }
+  },
+  created () {
+    console.log('friends create')
+  },
+  components: {
+    Heads,
+    Foots
   }
+}
 </script>
 
 <style lang="">

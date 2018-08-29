@@ -1,16 +1,19 @@
 import types from '../mutation-types'
 
-const state = {
+export const state = {
   active: 'index',
-  mask_show: false
+  mask_show: false,
+  testA: 'a',
+  testB: 'b',
+  testC: 'c'
 }
 
-const getters = {
+export const getters = {
   active: state => state.active,
   mask_show: state => state.mask_show
 }
 
-const actions = {
+export const actions = {
   changeIndexActivedTab ({commit}, type) {
     commit(types.HOME_TAB_ACTIVED, type)
   },
@@ -20,7 +23,7 @@ const actions = {
 }
 
 // 只能是同步操作
-const mutations = {
+export const mutations = {
   [types.HOME_TAB_ACTIVED] (state, tag) {
     state.active = tag
   },

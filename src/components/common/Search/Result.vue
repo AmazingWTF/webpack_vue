@@ -37,63 +37,63 @@
 </template>
 
 <script>
-  import { swiper, swiperSlide } from 'vue-awesome-swiper'
-  import api from '@/api/api'
-  import 'swiper/dist/css/swiper.css'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import api from '@/api/api'
+import 'swiper/dist/css/swiper.css'
 
-  export default {
-    data () {
-      return {
-        tabList: ['单曲', '歌手', '专辑', '歌单', '视频', '主播电台', '用户'],
-        swiperOptions: {
-          direction: 'horizontal'
-        },
-        type: 0, // 当前选择搜索结果分类
-        infoList: [],
-        needSendList: []
-      }
-    },
-    props: [
-      'searchKeyWords',
-      'result'
-    ],
-    methods: {
-      test () {
-        this.changeTab(this.$refs['tab-content'].swiper.activeIndex)
+export default {
+  data () {
+    return {
+      tabList: ['单曲', '歌手', '专辑', '歌单', '视频', '主播电台', '用户'],
+      swiperOptions: {
+        direction: 'horizontal'
       },
-      changeTab (index) {
-        let refs = this.$refs
-        this.type = index
-        refs['tab-content'].swiper.slideTo(index)
-
-        if (!this.needSendList[index]) {
-          this.getInfo(index)
-          this.needSendList[index] = true
-        }
-      },
-      getInfo (index = 0) {
-        let _this = this
-        console.log(index + '----------')
-        api.search({
-          q: _this.tabList[index]
-        })
-          .then((res) => {
-            this.$set(this.infoList, index, res.data.musics)
-          })
-      }
-    },
-    created () {
-      console.log('result created')
-      console.log(this.result)
-      this.$set(this.infoList, 0, this.result)
-    },
-    mounted () {
-    },
-    components: {
-      swiper,
-      swiperSlide
+      type: 0, // 当前选择搜索结果分类
+      infoList: [],
+      needSendList: []
     }
+  },
+  props: [
+    'searchKeyWords',
+    'result'
+  ],
+  methods: {
+    test () {
+      this.changeTab(this.$refs['tab-content'].swiper.activeIndex)
+    },
+    changeTab (index) {
+      let refs = this.$refs
+      this.type = index
+      refs['tab-content'].swiper.slideTo(index)
+
+      if (!this.needSendList[index]) {
+        this.getInfo(index)
+        this.needSendList[index] = true
+      }
+    },
+    getInfo (index = 0) {
+      let _this = this
+      console.log(index + '----------')
+      api.search({
+        q: _this.tabList[index]
+      })
+        .then((res) => {
+          this.$set(this.infoList, index, res.data.musics)
+        })
+    }
+  },
+  created () {
+    console.log('result created')
+    console.log(this.result)
+    this.$set(this.infoList, 0, this.result)
+  },
+  mounted () {
+  },
+  components: {
+    swiper,
+    swiperSlide
   }
+}
 </script>
 
 <style lang="less" scoped>

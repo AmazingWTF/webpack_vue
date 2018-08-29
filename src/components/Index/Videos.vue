@@ -16,30 +16,30 @@
 </template>
 
 <script>
-  import api from '@/api/api'
+import api from '@/api/api'
 
-  export default {
-    data () {
-      return {
-        videoList: []
-      }
-    },
-    created () {
-      let _this = this
-      api.getInTheathersMovie({
-        city: '上海'
-      })
-        .then(res => {
-          console.log(res)
-          _this.videoList = [...res.data.subjects]
-        })
-    },
-    activated () {
-      console.log('activated')
-    },
-    mounted () {
+export default {
+  data () {
+    return {
+      videoList: []
     }
+  },
+  created () {
+    let _this = this
+    api.getInTheathersMovie({
+      city: '上海'
+    })
+      .then(res => {
+        console.log(res)
+        _this.videoList = [...res.data.subjects]
+      })
+  },
+  activated () {
+    console.log('activated')
+  },
+  mounted () {
   }
+}
 </script>
 
 <style lang="less" scoped>

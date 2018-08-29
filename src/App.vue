@@ -9,45 +9,48 @@
 </template>
 
 <script>
-  import SideBar from './components/common/SideBar.vue'
-  import Search from '@/components/common/Search'
-  import { mapMutations } from 'vuex'
+import SideBar from './components/common/SideBar.vue'
+import Search from '@/components/common/Search'
+import { mapState } from 'vuex'
 
-  export default {
-    name: 'app',
-    data () {
-      return {
-        pop_status: false
-      }
-    },
-    computed: {
-    },
-    methods: {
-      ...mapMutations([
-      ])
-    },
-    watch: {
-      $route (to, from) {
-        // 已经访问过的路由
-      }
-    },
-    created () {
-      // this.isActive(this.$route.path.slice(1))
-    },
-    mounted () {
-
-    },
-    components: {
-      SideBar,
-      Search
+export default {
+  name: 'app',
+  data () {
+    return {
+      pop_status: false
     }
+  },
+  computed: {
+    ...mapState({
+      testA: state => state.app.testA,
+      testB: state => state.app.testB,
+      testC: state => state.app.testC
+    })
+  },
+  methods: {
+  },
+  watch: {
+    $route (to, from) {
+      // 已经访问过的路由
+    }
+  },
+  created () {
+    console.log(this.testA)
+  },
+  mounted () {
+
+  },
+  components: {
+    SideBar,
+    Search
   }
+}
 </script>
 
 <style lang="less">
-@import '/assets/css/reset.css';
-@import '/assets/fonts/iconfont.css';
-@import '/assets/common/less/mixin.css';
+@import './assets/css/reset.css';
+@import './assets/fonts/iconfont.css';
+// @import './assets/common/less/mixin.less';
 
 html, body {
   height: 100%;

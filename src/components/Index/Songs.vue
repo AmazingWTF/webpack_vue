@@ -124,34 +124,34 @@
 </template>
 
 <script>
-  import { Popup, Group, Cell } from 'vux'
-  export default {
-    data () {
-      return {
-        banner: [
-          'http://p1.music.126.net/p7-jnbX8-3DHhpUlXMzQSg==/109951163099039454.jpg',
-          'http://p1.music.126.net/gMbIT43nzQ-KlsdVwcS22w==/109951163098993364.jpg',
-          'http://p1.music.126.net/B8LYkhNWoqNUvaeuU-gNkw==/109951163098475610.jpg',
-          'http://p1.music.126.net/iybJ3sVLB28jwqc9xegDDg==/109951163098493350.jpg'
-        ],
-        show: false
-      }
-    },
-    components: {
-      Popup,
-      Group,
-      Cell
-    },
-    methods: {
-      popup () {
-        this.show = !this.show
-        console.log(this.show)
-      }
-    },
-    created () {
-      console.log('/index/songs created ')
+import { Popup, Group, Cell } from 'vux'
+export default {
+  data () {
+    return {
+      banner: [
+        'http://p1.music.126.net/p7-jnbX8-3DHhpUlXMzQSg==/109951163099039454.jpg',
+        'http://p1.music.126.net/gMbIT43nzQ-KlsdVwcS22w==/109951163098993364.jpg',
+        'http://p1.music.126.net/B8LYkhNWoqNUvaeuU-gNkw==/109951163098475610.jpg',
+        'http://p1.music.126.net/iybJ3sVLB28jwqc9xegDDg==/109951163098493350.jpg'
+      ],
+      show: false
     }
+  },
+  components: {
+    Popup,
+    Group,
+    Cell
+  },
+  methods: {
+    popup () {
+      this.show = !this.show
+      console.log(this.show)
+    }
+  },
+  created () {
+    console.log('/index/songs created ')
   }
+}
 </script>
 
 <style lang="less" scoped>

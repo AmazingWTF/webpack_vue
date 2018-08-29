@@ -11,63 +11,66 @@
         <router-view></router-view>
       </keep-alive>
     </div>
-    <foots></foots>
+    <Test :message="'test message'" />
+    <Foots></Foots>
   </div>
 </template>
 
 <script>
-  import Heads from '@/components/common/Heads'
-  import Foots from '@/components/common/Foots'
-  import IndexFM from '@/components/Index/FM'
-  import { setLocalStorage, removeLocalStorage } from '@/utils/utils.js'
-  // import BScroll from 'better-scroll'
-  let time
+import Test from '@/components/Test'
+import Heads from '@/components/common/Heads'
+import Foots from '@/components/common/Foots'
+import IndexFM from '@/components/Index/FM'
+import { setLocalStorage, removeLocalStorage } from '@/utils/utils.js'
+// import BScroll from 'better-scroll'
+let time
 
-  export default {
-    data () {
-      return {
-        type: 'IndexSongs'
-      }
-    },
-    components: {
-      Heads,
-      Foots,
-      IndexFM
-    },
-    computed: {
-      selected_tab () {
-        return this.$store.state.index_active
-      },
-      keep_ () {
-        return this.$store.state.index_active
-      }
-    },
-    methods: {
-      changeTab (v) {
-        this.type = v
-        console.log(this.selected_tab)
-        this.$store.commit('index_tab_isActive', v)
-        // 可以在点击之后将地址栏加上查询参数
-        // this.$router.push({
-        //   query: {
-        //     child: v
-        //   }
-        // })
-        setLocalStorage({index_route: v})
-      },
-      scrolling (e) {
-        let now = new Date().getTime()
-        if (now - time <= 50) return
-        time = new Date().getTime()
-      }
-    },
-    created () {
-      localStorage.removeItem('index_route')
-      if (this.false) removeLocalStorage()
-    },
-    mounted () {
+export default {
+  data () {
+    return {
+      type: 'IndexSongs'
     }
+  },
+  components: {
+    Test,
+    Heads,
+    Foots,
+    IndexFM
+  },
+  computed: {
+    selected_tab () {
+      return this.$store.state.index_active
+    },
+    keep_ () {
+      return this.$store.state.index_active
+    }
+  },
+  methods: {
+    changeTab (v) {
+      this.type = v
+      console.log(this.selected_tab)
+      this.$store.commit('index_tab_isActive', v)
+      // 可以在点击之后将地址栏加上查询参数
+      // this.$router.push({
+      //   query: {
+      //     child: v
+      //   }
+      // })
+      setLocalStorage({index_route: v})
+    },
+    scrolling (e) {
+      let now = new Date().getTime()
+      if (now - time <= 50) return
+      time = new Date().getTime()
+    }
+  },
+  created () {
+    localStorage.removeItem('index_route')
+    if (this.false) removeLocalStorage()
+  },
+  mounted () {
   }
+}
 </script>
 
 <style lang="less">

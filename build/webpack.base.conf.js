@@ -54,7 +54,11 @@ const webpackConfig = {
       },
       {
         test: /\.less/,
-        loader: 'less-loader'
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'less-loader'
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

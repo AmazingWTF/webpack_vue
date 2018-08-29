@@ -39,20 +39,20 @@
 </template>
 
 <script>
-  // import BScroll from 'better-scroll'
-  export default {
-    data () {
-      return {
-        recommend_list: ['田馥甄', '林宥嘉', '小幸运', 'Welcome To New York', '谈判官', '第一步', 'Xon', '追光者', 'Something Just Like This', 'Planet'],
-        history_list: ['sunrise', '历历万乡', '在人间', '天后', 'freedom']
-      }
-    },
-    methods: {
-      choosed_search (choosedWords) {
-        this.$store.commit('change_search_tab', 'SearchResult')
-      }
+// import BScroll from 'better-scroll'
+export default {
+  data () {
+    return {
+      recommend_list: ['田馥甄', '林宥嘉', '小幸运', 'Welcome To New York', '谈判官', '第一步', 'Xon', '追光者', 'Something Just Like This', 'Planet'],
+      history_list: ['sunrise', '历历万乡', '在人间', '天后', 'freedom']
+    }
+  },
+  methods: {
+    choosed_search (choosedWords) {
+      this.$store.commit('change_search_tab', 'SearchResult')
     }
   }
+}
 </script>
 
 <style lang="less" scoped>

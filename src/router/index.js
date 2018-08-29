@@ -19,7 +19,6 @@ const router = new Router({
     {
       path: '/index',
       component: Index,
-      name: 'index',
       meta: {
         keepAlive: true,
         title: 'index'

@@ -27,33 +27,33 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
-  export default {
-    data () {
-      return {
-      }
-    },
-    computed: {
-      ...mapGetters([
-        'active',
-        'search_show',
-        'search_type'
-      ])
-    },
-    methods: {
-      ...mapActions([
-        'searchShow',
-        'changeSearchType',
-        'showSideBar'
-      ]),
-      show_search () {
-        this.searchShow(true)
-        this.changeSearchType('SearchIndex')
-      }
-    },
-    components: {
+import { mapGetters, mapActions } from 'vuex'
+export default {
+  data () {
+    return {
     }
+  },
+  computed: {
+    ...mapGetters([
+      'active',
+      'search_show',
+      'search_type'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'searchShow',
+      'changeSearchType',
+      'showSideBar'
+    ]),
+    show_search () {
+      this.searchShow(true)
+      this.changeSearchType('SearchIndex')
+    }
+  },
+  components: {
   }
+}
 </script>
 
 <style lang="less" scoped>
