@@ -1,5 +1,5 @@
 <template>
-  <Popup v-model="mask_show" :hide-on-blur="testShow" width="80%" is-transparent position="left" >
+  <Popup v-model="mask_show" width="80%" is-transparent position="left" >
     <div class="tabBar">
       <div class="wrapper">
         <div class="my_info">
@@ -142,8 +142,9 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex'
+  import { mapActions } from 'vuex'
   import { Popup } from 'vux'
+
   export default {
     name: 'SideBar',
     data () {
@@ -152,17 +153,14 @@
       }
     },
     computed: {
-      ...mapGetters([
-        'mask_show'
-      ])
-      // mask_show: {
-      //   get () {
-      //     return this.$store.state.app.mask_show
-      //   },
-      //   set () {
-      //     this.showSideBar()
-      //   }
-      // }
+      mask_show: {
+        get () {
+          return this.$store.state.app.mask_show
+        },
+        set (bol) {
+          this.showSideBar(bol)
+        }
+      }
     },
     methods: {
       ...mapActions([
