@@ -2,14 +2,19 @@
   <div id="app">
     <Heads></Heads>
     <SideBar></SideBar>
-    <transition name="test" duration="500">
+    <transition name="test">
       <keep-alive>
         <router-view/>
       </keep-alive>
     </transition>
 
-    <router-view name="content"></router-view>
-    <router-view name="dashboard"></router-view>
+    <transition name="test">
+      <router-view name="content"></router-view>
+    </transition>
+
+    <transition name="test">
+      <router-view name="dashboard"></router-view>
+    </transition>
 
     <Search></Search>
 
@@ -67,21 +72,10 @@ export default {
 // @import './assets/common/less/mixin.less';
 
 .test-enter-active {
-  animation: bounce-in .5s;
+  animation: zoomInLeft .5s;
 }
 .test-leave-active {
-  animation: bounce-in .5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
+  animation: zoomInLeft .5s reverse;
 }
 
 html, body {
@@ -99,8 +93,9 @@ html, body {
   color: #2c3e50;
   height: 100%;
   background-color: #fbfbfb;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+  padding-top: 64px;
 }
 
 a{

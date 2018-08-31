@@ -29,6 +29,8 @@ npm test
 
 ### something notice
   #### Vue
+  - 组件传参尽可能通过使用 props 解耦
+
   - transition 组件
     ```
     * <transition name="test"></transition> 定义，样式控制只需要定义 形似 .test-enter-active 的类名，即可控制相应导航阶段行为
@@ -56,6 +58,21 @@ npm test
   - router-link
     ``` html
     <router-link :to="{ name: 'user', params: { userId: 123 }}"></router-link>
+    ```
+  - 导航守卫
+    > next 
+    + `传入false会取消导航`
+    + `传入'/login'或者{path: 'login'}会中断当前导航，并前往/login`
+    + `传入Error实例会终止导航并且将错误实例传递给router.onError注册的回调`
+    ```
+    * 全局守卫 router.beforeEach((to, from, next) => {})
+      全局解析守卫 router.beforeResolve(())
+      全局后置钩子 router.afterEach((to, from) => {})
+    * 路由独享(直接定义在特定路由配置中)的守卫 beforeEnter((to, from, next) => {})
+    * 组件内守卫 
+      beforeRouteEnter 不能获取组件实例(因未创建，但是在next回调中可以获取实例vm)
+      beforeRouteUpdate 路由改变，但是该组件被复用时调用(例如匹配/user/:id 从/user/123 -> /user/456)
+      beforeRouteLeave
     ```
   - 编程式导航
     ``` javascript

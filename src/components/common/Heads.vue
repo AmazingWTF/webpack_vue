@@ -67,7 +67,9 @@ export default {
     justify-content: center;
     font-size: 24px;
     line-height: 80px;
-    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
     line-height: 20px;
     .active {
       color: #eee;
