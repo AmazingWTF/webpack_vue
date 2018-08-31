@@ -1,14 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/components/Index'
-import MyFriends from '@/components/MyFriends'
-import MyMusic from '@/components/MyMusic'
-
-import IndexSongs from '@/components/Index/Songs'
-import IndexVideos from '@/components/Index/Videos'
-
-import DashBoard from '@/components/test/DashBoard'
-import Content from '@/components/test/Content'
 
 Vue.use(Router)
 
@@ -22,7 +13,7 @@ const router = new Router({
     },
     {
       path: '/index',
-      component: Index,
+      component: resolve => require(['@/components/Index'], resolve),
       meta: {
         keepAlive: true,
         title: 'index'
@@ -34,7 +25,7 @@ const router = new Router({
         },
         {
           path: 'songs',
-          component: IndexSongs,
+          component: resolve => require(['@/components/Index/Songs'], resolve),
           name: 'songs',
           meta: {
             title: 'index/songs'
@@ -42,7 +33,7 @@ const router = new Router({
         },
         {
           path: 'videos',
-          component: IndexVideos,
+          component: resolve => require(['@/components/Index/Videos'], resolve),
           name: 'videos',
           meta: {
             title: 'index/videos'
@@ -54,9 +45,9 @@ const router = new Router({
       path: '/friends',
       name: 'MyFriends',
       components: {
-        default: MyFriends,
-        content: Content,
-        dashboard: DashBoard
+        default: resolve => require(['@/components/MyFriends'], resolve),
+        content: resolve => require(['@/components/test/Content'], resolve),
+        dashboard: resolve => require(['@/components/test/DashBoard'], resolve)
       },
       meta: {
         title: 'friends'
@@ -65,7 +56,7 @@ const router = new Router({
     {
       path: '/music',
       name: 'MyMusic',
-      component: MyMusic,
+      component: resolve => require(['@/components/MyMusic'], resolve),
       meta: {
         title: 'MyMusic'
       }
