@@ -1,14 +1,11 @@
 <template>
   <div class="music">
-    <Heads></Heads>
-    <Foots></Foots>
     music.vue
   </div>
 </template>
 
 <script>
-import Heads from './common/Heads.vue'
-import Foots from './common/Foots.vue'
+
 export default {
   data () {
     return {
@@ -22,12 +19,12 @@ export default {
     console.log('MyMusic has reused')
   },
   components: {
-    Heads,
-    Foots
   }
 }
 </script>
 
-<style lang="">
-
+<style lang="less">
+.music {
+  flex: 1;
+}
 </style>

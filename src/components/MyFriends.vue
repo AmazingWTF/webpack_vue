@@ -1,14 +1,10 @@
 <template>
   <div class="friends">
-    <Heads></Heads>
-    <Foots></Foots>
     friends.vue
   </div>
 </template>
 
 <script>
-import Heads from './common/Heads.vue'
-import Foots from './common/Foots.vue'
 export default {
   data () {
     return {
@@ -19,12 +15,12 @@ export default {
     console.log('friends create')
   },
   components: {
-    Heads,
-    Foots
   }
 }
 </script>
 
-<style lang="">
-
+<style lang="less">
+.friends {
+  flex: 1;
+}
 </style>

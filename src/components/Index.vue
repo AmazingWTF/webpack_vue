@@ -1,6 +1,5 @@
 <template>
   <div ref="index" class="index">
-    <Heads></Heads>
     <div class="content" @scroll="scrolling">
       <div class="tab">
         <router-link to="songs">songs</router-link>
@@ -12,14 +11,12 @@
       </keep-alive>
     </div>
     <Test :message="'test message'" />
-    <Foots></Foots>
   </div>
 </template>
 
 <script>
 import Test from '@/components/Test'
-import Heads from '@/components/common/Heads'
-import Foots from '@/components/common/Foots'
+
 import IndexFM from '@/components/Index/FM'
 import { setLocalStorage, removeLocalStorage } from '@/utils/utils.js'
 // import BScroll from 'better-scroll'
@@ -33,8 +30,6 @@ export default {
   },
   components: {
     Test,
-    Heads,
-    Foots,
     IndexFM
   },
   computed: {
@@ -83,6 +78,7 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
     .content {
       flex: 1;
       width: 100%;
@@ -90,9 +86,9 @@ export default {
       padding-top: 35px;
       .tab {
         display: flex;
-        position: fixed;
+        position: absolute;
         left: 0;
-        top: 64px;
+        top: 0;
         width: 100%;
         z-index: 1;
         background-color: @bg-red;

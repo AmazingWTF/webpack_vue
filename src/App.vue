@@ -1,15 +1,27 @@
 <template>
   <div id="app">
+    <Heads></Heads>
     <SideBar></SideBar>
-    <keep-alive>
-      <router-view/>
-    </keep-alive>
+    <transition name="test" duration="500">
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+    </transition>
+
+    <router-view name="content"></router-view>
+    <router-view name="dashboard"></router-view>
+
     <Search></Search>
+
+    <Foots></Foots>
   </div>
 </template>
 
 <script>
-import SideBar from './components/common/SideBar.vue'
+import Heads from '@/components/common/Heads.vue'
+import Foots from '@/components/common/Foots.vue'
+
+import SideBar from '@/components/common/SideBar.vue'
 import Search from '@/components/common/Search'
 import { mapState } from 'vuex'
 
@@ -41,6 +53,8 @@ export default {
 
   },
   components: {
+    Heads,
+    Foots,
     SideBar,
     Search
   }
@@ -51,6 +65,24 @@ export default {
 @import './assets/css/reset.css';
 @import './assets/fonts/iconfont.css';
 // @import './assets/common/less/mixin.less';
+
+.test-enter-active {
+  animation: bounce-in .5s;
+}
+.test-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 html, body {
   height: 100%;
@@ -67,6 +99,8 @@ html, body {
   color: #2c3e50;
   height: 100%;
   background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
 }
 
 a{

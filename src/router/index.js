@@ -7,10 +7,14 @@ import MyMusic from '@/components/MyMusic'
 import IndexSongs from '@/components/Index/Songs'
 import IndexVideos from '@/components/Index/Videos'
 
+import DashBoard from '@/components/test/DashBoard'
+import Content from '@/components/test/Content'
+
 Vue.use(Router)
 
 const router = new Router({
   // mode: 'history',
+  mode: 'hash',
   routes: [
     {
       path: '/',
@@ -49,7 +53,11 @@ const router = new Router({
     {
       path: '/friends',
       name: 'MyFriends',
-      component: MyFriends,
+      components: {
+        default: MyFriends,
+        content: Content,
+        dashboard: DashBoard
+      },
       meta: {
         title: 'friends'
       }
@@ -62,7 +70,14 @@ const router = new Router({
         title: 'MyMusic'
       }
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 export default router
