@@ -36,5 +36,5 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from, next) => {
-  document.title = to.meta.title
+  to.meta.title && (document.title = to.meta.title)
 })
