@@ -60,6 +60,14 @@ const router = new Router({
       meta: {
         title: 'MyMusic'
       }
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: resolve => require(['@/components/Test'], resolve),
+      meta: {
+        title: 'Test'
+      }
     }
   ],
   scrollBehavior (to, from, savedPosition) {

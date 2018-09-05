@@ -1,6 +1,8 @@
 <template>
-  <div class="content">
+  <div class="content" @click="changeMessage">
     content.vue
+    <br>
+    <span style="font-weight:700">{{ info }}</span>
   </div>
 </template>
 
@@ -11,8 +13,16 @@ export default {
       msg: 'content.vue msg'
     }
   },
+  props: {
+    info: String
+  },
   created () {
     console.log('content create')
+  },
+  methods: {
+    changeMessage () {
+      this.info += '>>>changed<<<'
+    }
   },
   components: {
   }

@@ -32,6 +32,7 @@ npm test
   - 组件传参尽可能通过使用 props 解耦
   - 基础组件通过 require.context 注册额为全局组件，就不用重复在多个文件中导入（在Vue根实例创建之前注册）
   - 表单输入 修饰符(number...)
+  - 通过 .sync 修饰符，实现组件间通过props传递的数据双向绑定
   - transition 组件
     ```
     * <transition name="test"></transition> 定义，样式控制只需要定义 形似 .test-enter-active 的类名，即可控制相应导航阶段行为
